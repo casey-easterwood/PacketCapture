@@ -45,8 +45,6 @@ namespace PacketCapture
         {
             get
             {
-                Array.Reverse(_EthernetTypeData);
-
                 EthernetFrameType type = (EthernetFrameType) BitConverter.ToUInt16(_EthernetTypeData);
 
                 return type;
@@ -61,7 +59,12 @@ namespace PacketCapture
             
             SourceAddress = new MacAddress(Reader.Read(Ethernet.SourceAddress, data));
 
-            _EthernetTypeData  = Reader.Read(Ethernet.EtherType, data);
+            //bit value needs to be reversed
+            byte[] etherType = Reader.Read(Ethernet.EtherType, data);
+            
+            Array.Reverse(etherType);
+
+            _EthernetTypeData  = etherType;
         }
     }
 

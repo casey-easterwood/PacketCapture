@@ -10,11 +10,11 @@ namespace PacketCapture
     public class Parser 
     {
 
-        public static IPacket Parse(EthernetFrame frame)
+        public IPacket Parse(EthernetFrame frame)
         {
             IPacket packet = null;
 
-            if(frame.Header.Type == Types.EthernetFrameType.IPv4)
+            if(frame.Header.Type.Equals(Types.EthernetFrameType.IPv4))
             {
                 packet = new IPv4();
                 packet.parse(frame.Payload);
