@@ -10,7 +10,7 @@ namespace PacketCapture
     public class Parser 
     {
 
-        public IPacket Parse(EthernetFrame frame)
+        public static IPacket Parse(EthernetFrame frame)
         {
             IPacket packet = null;
 
