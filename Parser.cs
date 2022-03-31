@@ -20,7 +20,6 @@ namespace PacketCapture
                 packet.parse(frame.Payload);
             }
 
-
             return packet;
         }
     }
